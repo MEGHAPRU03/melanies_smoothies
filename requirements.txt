@@ -1,5 +1,0 @@
-#reuirements.txt
-snowflake-snowpark-python
-streamlit
-pandas
-    
