@@ -4,6 +4,7 @@ import requests
 import pandas as pd
 
 # Write directly to the app
+streamlit.title('My parents new Healthy Dinner')
 st.title(f" :cup_with_straw: Customize Your Smoothie! :cup_with_straw: ")
 st.write(
   """
