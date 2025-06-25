@@ -8,7 +8,7 @@ st.title('my parents new healthy diner')
 # write directly to app
 
 
-st.write(":cup_with_straw:customize your Smoothies! :cup_with_straw:")
+st.write(":cup_with_straw: customize your Smoothies! :cup_with_straw:")
 st.write(
     """ Choose the fruits you want in your custom smoothie!
     """)
