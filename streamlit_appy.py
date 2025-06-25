@@ -20,6 +20,7 @@ st.write('The name of Smoothie will be',name_on_order)
 # session = get_active_session()
 cnx=st.connection("Snowflake")
 session=cnx.session()
+
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('search_on'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
 #st.stop()
@@ -33,9 +34,8 @@ ingredients_list=st.multiselect(
     my_dataframe,
     max_selections=5
 )
- # Create the INGREDIENTS_STRING Variable 
-if ingredients_list:
-    # add space 
+# Create the INGREDIENTS_STRING Variable 
+if ingredients_list: 
     ingredients_string=' '
 
     for fruit_chosen in ingredients_list:
@@ -45,8 +45,8 @@ if ingredients_list:
         #st.write('The search value for',fruit_chosen,' is', search_on,'.')
         
         st.subheader(fruit_chosen +' Nutrition information')
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+ search_on)
-        fv_df=st.dataframe(data=fruityvice_response.json(),use_container_width=True)
+        smoothie_response = requests.get("https://smoothiefroot.com/api/fruit/"+ search_on)
+        sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
 
     # st.write(ingredients_string)
 # Build a SQL Insert Statement & Test It
@@ -54,6 +54,7 @@ if ingredients_list:
             values ('""" + ingredients_string +"""','""" + name_on_order+ """')"""
     #st.write(my_insert_stmt)
     # st.stop()
+    
     time_to_insert =st.button("Submit Order")
     if time_to_insert:
          session.sql(my_insert_stmt).collect()
